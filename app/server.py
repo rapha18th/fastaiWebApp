@@ -9,6 +9,8 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
+Port = int(os.environ.get('PORT', 50000))
+
 export_file_url = 'https://drive.google.com/uc?export=download&id=1PjoLI-N2MoQVbJ6WYvyvu6Z4QX85nN1e'
 export_file_name = 'export_resnet34_model.pkl'
 
@@ -82,4 +84,4 @@ async def analyze(request):
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
-        uvicorn.run(app=app, host='0.0.0.0', port=5000, log_level="info")
+        uvicorn.run(app=app, host='0.0.0.0', port=Port, log_level="info")
